@@ -3,6 +3,7 @@ name: just check out
 # This workflow is triggered on pushes to the repository.
 on:
   pull_request:
+    types: [assigned, opened, synchronize, reopened]
     branches:
     - master
 
