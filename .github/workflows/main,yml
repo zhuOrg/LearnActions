@@ -1,3 +1,4 @@
+name: test my FirstJSAction
 on: [push]
 
 jobs:
