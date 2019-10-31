@@ -1,9 +1,6 @@
 name: Greet Everyone
 # This workflow is triggered on pushes to the repository.
-on: 
-  pull_request: 
-     branches:
-     - master
+on:  push
 
 jobs:
   build:
@@ -21,8 +18,27 @@ jobs:
       # This step prints an output (time) from the previous step's action.
       - name: Echo the greeting's time
         run: echo 'The time was ${{ steps.hello.outputs.time }}.'
-        
-      - uses: maddox/actions/sleep@master
+
+
+
+  npmtest:
+
+    runs-on: ubuntu-latest
+
+
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+        registry-url: 'https://registry.npmjs.org'
+# Skip post-install scripts here, as a malicious
+# script could steal NODE_AUTH_TOKEN.
+    - run: npm install --ignore-scripts
+   #   env:
+   #     NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+# `npm rebuild` will run all those post-install scripts for us.
+    - run: npm rebuild && npm run prepare --if-present
         
   job2:
 
