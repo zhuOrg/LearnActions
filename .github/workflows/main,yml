@@ -1,5 +1,9 @@
 name: test my FirstJSAction
-on: [push]
+on: 
+  push:
+    paths:
+    - '*'
+    - 'go/**'
 
 jobs:
   hello_world_job:
