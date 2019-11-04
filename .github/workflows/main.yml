@@ -1,9 +1,5 @@
 name: test my FirstJSAction
-on: 
-  push:
-    paths:
-    - '*'
-    - 'go/**'
+on:   push
 
 jobs:
   testps:
@@ -12,6 +8,8 @@ jobs:
     - name: PS Version
       run: $PSVersionTable.PSVersion
       shell: powershell
+    - name: Build
+      run: where.exe tar
   hello_world_job:
     runs-on: ubuntu-latest
     name: A job to say hello
