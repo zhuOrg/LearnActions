@@ -8,7 +8,7 @@ on:
 jobs:
   testps:
     runs-on: windows-latest
-    Steps:
+    steps:
     - name: PS Version
       run: $PSVersionTable.PSVersion
   hello_world_job:
