@@ -4,15 +4,20 @@ on:   push
 jobs:
   testHome:
     runs-on: ubuntu-latest
+    
     steps:
+    - run:   echo ::set-env name=HOME::$HOME
+      shell: bash
     - name: "Cache ruby"
       uses: actions/cache@preview
       id: cache-ruby
       with:
-        path: ../../../.rvm
+        #path: ../../../.rvm
+        path: ${{ env.HOME }}/.rvm
         key: ${{ runner.os }}-ruby-${{ env.RUBY_VERSION }}
         restore-keys: |
           ${{ runner.os }}-ruby-
+    
   hello_world_job:
     runs-on: ubuntu-latest
     name: A job to say hello
