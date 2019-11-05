@@ -9,7 +9,7 @@ jobs:
       uses: actions/cache@preview
       id: cache-ruby
       with:
-        path: ${{ GITHUB_WORKSPACE }}/.rvm
+        path: $HOME/.rvm
         key: ${{ runner.os }}-ruby-${{ env.RUBY_VERSION }}
         restore-keys: |
           ${{ runner.os }}-ruby-
