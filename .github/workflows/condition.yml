@@ -1,0 +1,11 @@
+name: Complete Release
+
+on:
+  issue_comment: 
+    type: [created]
+
+jobs:
+  merge-release-into-master:
+    runs-on: ubuntu-latest
+    name: Merge release branch into master
+    if: github.event.comment && github.event.comment.body == 'release-complete'
