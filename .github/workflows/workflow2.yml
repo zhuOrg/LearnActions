@@ -1,7 +1,10 @@
   
 name: deploy_to_channel_on_demand
 
-on: issue_comment
+on:
+  pull_request:
+    branches: 
+      - master
 
 jobs:
   deploy:
