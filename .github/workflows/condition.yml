@@ -3,11 +3,12 @@ name: Complete Release
 on:
   issue_comment: 
     type: [created]
+    if: github.event.comment && github.event.comment.body == 'release-complete'
 
 jobs:
   merge-release-into-master:
     runs-on: ubuntu-latest
     name: Merge release branch into master
-    if: github.event.comment && github.event.comment.body == 'release-complete'
+    #if: github.event.comment && github.event.comment.body == 'release-complete'
     steps:
       - run: echo 'hello'
