@@ -1,5 +1,5 @@
 name: test my FirstJSAction
-on:   push
+on:   registry_package
 
 jobs:
   Mac:
