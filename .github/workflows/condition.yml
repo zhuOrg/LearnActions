@@ -9,3 +9,5 @@ jobs:
     runs-on: ubuntu-latest
     name: Merge release branch into master
     if: github.event.comment && github.event.comment.body == 'release-complete'
+    steps:
+      - run: echo 'hello'
