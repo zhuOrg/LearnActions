@@ -1,10 +1,10 @@
 name: refs/pull/:prNumber/merge
 
 
-on:
-  push:
-    branches: 
-      - master
+on: registry_package
+  #push:
+    #branches: 
+      #- master
 
 jobs:
 
