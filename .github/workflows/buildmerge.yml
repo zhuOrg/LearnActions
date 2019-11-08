@@ -1,0 +1,22 @@
+name: refs/pull/:prNumber/merge
+
+
+on:
+
+  push:
+
+    branches: 
+
+      - refs/pull/3/merge
+
+jobs:
+
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: logging
+
+        run: echo "$GITHUB_REF"
