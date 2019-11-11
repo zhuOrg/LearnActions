@@ -21,7 +21,7 @@ jobs:
       id: dynamic_var
       run: |
        a=$false
-       if[ ${{github.event_name}} != 'schedule'];then
+       if[ ${{github.event_name}} != 'schedule']; then
           a = $true
        fi
        
