@@ -15,22 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to say hello
     steps:
-   
-    # Use the output from the `hello` step
-    - name: Get the output bool
-      id: dynamic_var
-      run: |
-       a=$false
-       if[ ${{github.event_name}} != 'schedule']; then
-          a = $true
-       fi
-       
-       echo "::set-output name=who::$a"
-       echo "The output who is $a
        
     - name: Hello world action step
       id: hello
       uses: zhu5201314/FirstJSAction@1
       with:
-        who-to-greet: ${{ steps.dynamic_var.outputs.who }}
+        who-to-greet: ${{ github.event_name != 'schedule' }}
   
