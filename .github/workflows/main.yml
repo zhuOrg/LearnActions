@@ -20,7 +20,11 @@ jobs:
     - name: Get the output bool
       id: dynamic_var
       run: |
-       a = ${{github.event_name}} != 'schedule'
+       a=$false
+       if[ ${{github.event_name}} != 'schedule'];then
+          a = $true
+       fi
+       
        echo "::set-output name=who::$a"
        echo "The output who is $a
        
