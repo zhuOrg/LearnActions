@@ -2,11 +2,11 @@ name: test my FirstJSAction
 on:   push
 
 jobs:
-  #Mac:
-    #runs-on: macOS-latest 
+  Mac:
+    runs-on: macOS-latest 
     
-    #steps:
-    #- uses: actions/checkout@v1
+    steps:
+    - uses: actions/checkout@v1
     #- run: xcodebuild -showsdks 
 
 
