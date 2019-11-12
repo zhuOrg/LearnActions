@@ -11,9 +11,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: output label name
-        run: |
-          echo  $GITHUB_CONTEXT
-          
-        env:
-          GITHUB_CONTEXT: ${{ github.event.pull_request.labels[0].name }}
+    - name: current branch
+      run: |
+        array = ${{ github.event.pull_request.labels }}
+        echo "${array[*]}"
