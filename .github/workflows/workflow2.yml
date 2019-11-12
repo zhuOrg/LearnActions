@@ -13,5 +13,5 @@ jobs:
     steps:
     - name: current branch
       run: |
-        array = ${{ github.event.pull_request.labels }}
+        array = ${{ toJson(github.event.pull_request.labels) }}
         echo "${array[*]}"
