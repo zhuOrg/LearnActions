@@ -5,9 +5,15 @@ on:
   pull_request:
     branches: 
       - master
+    types: [labeled]
+    
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: logging
-        run: echo "$GITHUB_REF"
+      - name: output label name
+        run: |
+          echo "$GITHUB_CONTEXT"
+          
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github.event.pull_request.labels) }}
