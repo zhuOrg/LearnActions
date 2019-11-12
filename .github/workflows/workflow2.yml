@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: output label name
         run: |
-          array = $GITHUB_CONTEXT
+          array=$GITHUB_CONTEXT
           echo ${array[*].name}
           
         env:
