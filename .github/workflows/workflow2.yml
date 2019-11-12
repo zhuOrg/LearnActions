@@ -14,5 +14,7 @@ jobs:
     - name: current branch
       run: |
    
-        echo = ${{ toJson(github.event.pull_request.labels) }}
+        echo = $LABELS
+      env:
+        LABELS: ${{ toJson(github.event.pull_request.labels) }}
       
