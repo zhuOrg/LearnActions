@@ -13,8 +13,8 @@ jobs:
     steps:
       - name: output label name
         run: |
-          label = $GITHUB_CONTEXT
-          echo label[0].name
+          array = $GITHUB_CONTEXT
+          echo ${array[*].name}
           
         env:
           GITHUB_CONTEXT: ${{ toJson(github.event.pull_request.labels) }}
