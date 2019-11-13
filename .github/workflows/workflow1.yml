@@ -10,6 +10,7 @@ jobs:
       run: |
           echo "::set-env name=COMPONENTS::hhhhhhh"
     - name: use env
+      shell: powershell
       run: |
          echo ${env:COMPONENTS}
         
