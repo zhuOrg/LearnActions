@@ -11,7 +11,7 @@ jobs:
           echo "::set-env name=COMPONENTS::hhhhhhh"
     - name: use env
       run: |
-         echo ${env.COMPONENTS}
+         echo ${env:COMPONENTS}
         
     - run:   echo ::set-env name=REPOSITORY_NAME::$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}')
       shell: bash
