@@ -3,20 +3,23 @@ name: test set output
 on:   push
 jobs:
   release: 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
   
     steps:
-    - shell: bash
-      id: release_description
+    - name: set env
       run: |
-          description="this is line one
-                       this is line two
-                       this is line three"
-          echo $description
-          echo "::set-output name=description::$description"
-    - shell: bash
+          echo "::set-env name=COMPONENTS::$(find src/Viserio -mindepth 2 -type f -name phpunit.xml.dist -printf '%h,' | sort)"
+    - name: use env
       run: |
-        echo ${{ steps.release_description.outputs.description }}
+         ${env.COMPONENTS}.TrimEnd(",").Split(",")| ForEach {
+            echo ::group::$_
+            cd $_
+            composer validate --strict
+            $COMPOSER_UP
+            $PHPUNIT
+            cd $GITHUB_WORKSPACE
+            echo ::endgroup::
+          }
         
     - run:   echo ::set-env name=REPOSITORY_NAME::$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}')
       shell: bash
