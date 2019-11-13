@@ -9,13 +9,19 @@ jobs:
     - shell: bash
       id: release_description
       run: |
-          description="this is line one\n
-                       this is line two\n
+          description="this is line one
+                       this is line two
                        this is line three"
           echo $description
           echo "::set-output name=description::$description"
     - shell: bash
       run: |
         echo ${{ steps.release_description.outputs.description }}
+        
+    - run:   echo ::set-env name=REPOSITORY_NAME::$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}')
+      shell: bash
+
+    - run:   echo "$REPOSITORY_NAME"
+      shell: bash
       
 
