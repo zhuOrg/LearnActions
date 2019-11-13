@@ -1,5 +1,5 @@
 name: test set output
-# This workflow is triggered on pushes to the repository.
+# This workflow is triggered on pushes to the repository. 666
 on:   push
 jobs:
   release: 
