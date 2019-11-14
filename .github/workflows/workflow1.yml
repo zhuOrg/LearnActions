@@ -3,7 +3,7 @@ name: test set output
 on:   push
 jobs:
   release: 
-    runs-on: windows-latest
+    runs-on: self-hosted
   
     steps:
     - name: set env
