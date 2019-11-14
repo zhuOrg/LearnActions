@@ -1,9 +1,7 @@
 
 name: pull requestmerge
 
-on: 
- pull_request:
-     types: [opened]
+on:  pull_request
     
 jobs:
   deploy:
