@@ -8,7 +8,8 @@ jobs:
     steps:
     - name: set env
       run: |
-          echo "::set-env name=COMPONENTS::hhhhhhh"
+        echo "::set-env name=COMPONENTS::$(find src/Viserio -mindepth 2 -type f -name phpunit.xml.dist -printf '%h,' | sort)"
+          #echo "::set-env name=COMPONENTS::hhhhhhh"
     - name: use env
       shell: powershell
       run: |
