@@ -14,6 +14,7 @@ jobs:
       shell: powershell
       run: |
          echo ${env:COMPONENTS}
+         #hhhh
         
     - run:   echo ::set-env name=REPOSITORY_NAME::$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}')
       shell: bash
