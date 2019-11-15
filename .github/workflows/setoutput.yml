@@ -17,5 +17,5 @@ jobs:
          echo "::set-output name=description1::$description"
     - shell: bash
       run: |
-         echo ${{ steps.release_description.outputs.description1 }}
+         echo "${{ steps.release_description.outputs.description1 }}"
  
