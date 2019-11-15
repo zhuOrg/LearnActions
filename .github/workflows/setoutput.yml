@@ -1,0 +1,18 @@
+name: set output 
+on: push
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+    - shell: bash
+      id: release_description
+      run: |
+         description="this is line one\n
+                   this is line two\n
+                   this is line three"
+         echo $description
+         echo "::set-output name=description::$description"
+   - shell: bash
+     run: |
+        echo ${{ steps.release_description.outputs.description }}
+ 
