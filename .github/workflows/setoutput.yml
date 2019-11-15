@@ -14,8 +14,8 @@ jobs:
          description="${description//$'\n'/'%0A'}"
          description="${description//$'\r'/'%0D'}"
          echo $description
-         echo "::set-output name=description::$description"
+         echo "::set-output name=description1::$description"
     - shell: bash
       run: |
-         echo ${{ steps.release_description.outputs.description }}
+         echo ${{ steps.release_description.outputs.description1 }}
  
