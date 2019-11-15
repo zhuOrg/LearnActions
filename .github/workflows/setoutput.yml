@@ -12,7 +12,7 @@ jobs:
                    this is line three"
          echo $description
          echo "::set-output name=description::$description"
-   - shell: bash
-     run: |
-        echo ${{ steps.release_description.outputs.description }}
+    - shell: bash
+      run: |
+         echo ${{ steps.release_description.outputs.description }}
  
