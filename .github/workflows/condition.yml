@@ -1,14 +1,20 @@
 name: Complete Release
 
-on:
-  issue_comment: 
-    type: [created]
-    if: github.event.comment && github.event.comment.body == 'release-complete'
+on: [push,  repository_dispatch]
+#on:
+ # issue_comment: 
+ #   type: [created]
+ #   if: github.event.comment && github.event.comment.body == 'release-complete'
 
 jobs:
   merge-release-into-master:
+    if: github.event_name == ‘push’
     runs-on: ubuntu-latest
     name: Merge release branch into master
     #if: github.event.comment && github.event.comment.body == 'release-complete'
+    steps:
+      - run: echo 'hello'
+  job2:
+    runs-on: [ubuntu-latest]
     steps:
       - run: echo 'hello'
