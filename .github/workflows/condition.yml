@@ -8,7 +8,7 @@ on: [push,  repository_dispatch]
 
 jobs:
   merge-release-into-master:
-    if: github.event_name == ‘push’
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     name: Merge release branch into master
     #if: github.event.comment && github.event.comment.body == 'release-complete'
