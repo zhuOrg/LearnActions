@@ -8,12 +8,15 @@ on: [push,  repository_dispatch]
 
 jobs:
   merge-release-into-master:
-    if: github.event_name != 'push'
+    #if: github.event_name != 'push'
     runs-on: ubuntu-latest
     name: Merge release branch into master
     #if: github.event.comment && github.event.comment.body == 'release-complete'
     steps:
       - run: echo 'hello'
+      - uses: zhu5201314/DockerContainer_action@master
+        with:
+          who-to-greet: 'Mona the Octocat'
   job2:
     runs-on: [ubuntu-latest]
     steps:
