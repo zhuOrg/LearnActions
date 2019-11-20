@@ -13,7 +13,6 @@ jobs:
     name: Merge release branch into master
     #if: github.event.comment && github.event.comment.body == 'release-complete'
     steps:
-      - run: chmod +x entrypoint.sh
       - uses: zhu5201314/DockerContainer_action@master
         with:
           who-to-greet: 'Mona the Octocat'
