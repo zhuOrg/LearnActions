@@ -9,7 +9,8 @@ jobs:
     - name: Build
       shell: cmd
       run: |
-         IPCONFIG
+         
          build.bat
+         IPCONFIG
          #SYSTEMINFO 
    
