@@ -11,5 +11,5 @@ jobs:
       run: |
          IPCONFIG
          build.bat
-         SYSTEMINFO 
+         #SYSTEMINFO 
    
