@@ -1,5 +1,5 @@
 name: testCMD
-on: check_suite
+on: push
 
 jobs:
   job1:
