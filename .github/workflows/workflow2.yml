@@ -4,7 +4,8 @@ on: push
 
 env:
   DOCKER_URL: some.docker.url
-  
+  DOCKER_IMAGE: ${{env.DOCKER_URL}}/some-namespace/some-image
+
 jobs:
   build:    
     runs-on: ubuntu-latest
