@@ -1,6 +1,6 @@
 name: workflow2
 
-on: push
+on: check_run
 
 env:
   DOCKER_URL: some.docker.url
@@ -9,12 +9,11 @@ jobs:
   build:  
     
     runs-on: ubuntu-latest
-    env:
-      DOCKER_IMAGE: ${{env.DOCKER_URL}}/some-namespace/some-image 
-      
+ 
     steps:
     
     - name: Step 1
       run: |
         echo $DOCKER_IMAGE
-     
+      env:
+        DOCKER_IMAGE: ${{env.DOCKER_URL}}/some-namespace/some-image 
