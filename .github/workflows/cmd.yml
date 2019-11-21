@@ -1,0 +1,14 @@
+name: testCMD
+on: push
+
+jobs:
+  job1:
+    runs-on: windows-latest
+    steps:
+    - name: Build
+      shell: cmd
+      run: |
+         IPCONFIG
+         powercfg – energy
+         ping google.com
+   
