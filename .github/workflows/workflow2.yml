@@ -6,12 +6,13 @@ env:
   DOCKER_URL: some.docker.url
 
 jobs:
-  build:    
+  build:  
+    env:
+      DOCKER_IMAGE: ${{env.DOCKER_URL}}/some-namespace/some-image 
     runs-on: ubuntu-latest
     steps:
     
     - name: Step 1
       run: |
         echo $DOCKER_IMAGE
-      env:
-          DOCKER_IMAGE: ${{env.DOCKER_URL}}/some-namespace/some-image
+     
