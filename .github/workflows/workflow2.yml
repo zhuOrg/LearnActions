@@ -1,16 +1,17 @@
+name: workflow2
 
-name: pull requestmerge
+on: push
 
-on:  pull_request
-    
+env:
+  DOCKER_URL: some.docker.url
+  
 jobs:
-  deploy:
+  build:    
     runs-on: ubuntu-latest
     steps:
-    - name: current branch
+    
+    - name: Step 1
       run: |
-   
-        echo  $LABELS
+        echo $DOCKER_IMAGE
       env:
-        LABELS: ${{ toJson(github.event.pull_request.labels) }}
-      
+          DOCKER_IMAGE: ${{env.DOCKER_URL}}/some-namespace/some-image
