@@ -1,0 +1,17 @@
+name: multiple commits
+
+on: push
+
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - uses: actions/checkout@v1
+
+    - name: wait
+
+      run: |
+         sleep 5m
