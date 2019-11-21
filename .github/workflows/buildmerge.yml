@@ -1,6 +1,6 @@
 name: matrix test
 
-on: push
+on: check_suite
     #branches: 
       #- master
 
