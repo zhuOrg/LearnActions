@@ -1,6 +1,6 @@
 name: Complete Release
 
-on: [push,  repository_dispatch]
+on: [repository_dispatch]
 #on:
  # issue_comment: 
  #   type: [created]
