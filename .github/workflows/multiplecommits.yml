@@ -1,6 +1,6 @@
 name: multiple commits
 
-on: push
+on: check_run
 
 
 jobs:
