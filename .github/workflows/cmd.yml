@@ -1,4 +1,4 @@
-name: testCMD
+name: add path
 on: push
 
 jobs:
@@ -6,10 +6,11 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v1
-    - name: Build
-      shell: cmd
+    - name: add path
       run: |
-         call build.bat
-         IPCONFIG
-         SYSTEMINFO 
-   
+        mkdir -p $GITHUB_WORKSPACE/bin
+        echo "echo Hello, world!" > $GITHUB_WORKSPACE/bin/hello-world
+        echo "::add-path::$GITHUB_WORKSPACE/bin"
+    - name: Use program
+      run: hello-world
+     
