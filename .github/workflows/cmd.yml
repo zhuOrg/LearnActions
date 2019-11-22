@@ -11,6 +11,8 @@ jobs:
         mkdir -p $GITHUB_WORKSPACE/bin
         echo "echo Hello, world!" > $GITHUB_WORKSPACE/bin/hello-world
         echo "::add-path::$GITHUB_WORKSPACE/bin"
+    - name: Make hello-world executable
+      run: chmod +x $GITHUB_WORKSPACE/bin/hello-world
     - name: Use program
       run: hello-world
      
