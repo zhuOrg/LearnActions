@@ -7,8 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       VERSION: ${{ '0.2' }}
-      NAME: ${{ 'subsurface/mxe-build-container:$VERSION.stage1' }}
-   
+     
     steps:
     - uses: actions/checkout@v1
     - run: echo 'version'  $VERSION  'name' + $NAME
