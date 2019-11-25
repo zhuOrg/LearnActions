@@ -6,6 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
+      env:
+        ACCESS_KEY_ID: ${{secrets.S3_ACCESS_KEY_ID}}
     - name: add path
       run: |
         mkdir -p $GITHUB_WORKSPACE/bin
@@ -16,4 +18,5 @@ jobs:
     #  run: chmod +x $GITHUB_WORKSPACE/bin/hello-world
     - name: Use program
       run: hello-world
+    
      
