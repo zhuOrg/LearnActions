@@ -3,11 +3,12 @@ on: push
 
 jobs:
   job1:
+    env:
+        ACCESS_KEY_ID: ${{secrets.S3_ACCESS_KEY_ID}}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-      env:
-        ACCESS_KEY_ID: ${{secrets.S3_ACCESS_KEY_ID}}
+      
     - name: add path
       run: |
         mkdir -p $GITHUB_WORKSPACE/bin
