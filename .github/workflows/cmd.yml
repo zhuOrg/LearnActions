@@ -11,6 +11,7 @@ jobs:
    
     steps:
     - uses: actions/checkout@v1
+    - run: echo 'version' + $VERSION + 'name' + $NAME
       
     - name: add path
       run: |
@@ -18,8 +19,6 @@ jobs:
         echo "echo Hello, world!" > $GITHUB_WORKSPACE/bin/hello-world
         echo "::add-path::$GITHUB_WORKSPACE/bin"
         chmod +x $GITHUB_WORKSPACE/bin/hello-world
-    #- name: Make hello-world executable
-    #  run: chmod +x $GITHUB_WORKSPACE/bin/hello-world
     - name: Use program
       run: hello-world
     
