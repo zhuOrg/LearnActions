@@ -1,12 +1,14 @@
 name: add path
 on: push
-env:
-        ACCESS_KEY_ID: ${{secrets.S3_ACCESS_KEY_ID}}
 
 jobs:
   job1:
    
     runs-on: ubuntu-latest
+    env:
+      VERSION: ${{ '0.2' }}
+      NAME: ${{ 'subsurface/mxe-build-container:$VERSION.stage1' }}
+   
     steps:
     - uses: actions/checkout@v1
       
