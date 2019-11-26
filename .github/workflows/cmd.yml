@@ -19,9 +19,10 @@ jobs:
         echo "echo Hello, world!" > $GITHUB_WORKSPACE/bin/hello-world
         echo "::add-path::$GITHUB_WORKSPACE/bin"
         #chmod +x $GITHUB_WORKSPACE/bin/hello-world
-    - name: Use program
-      run: hello-world
-      if: success() || failure()  
+    - run: echo "::error [FAIL: in 1 rounds]"
+    #- name: Use program
+      #run: hello-world
+      #if: success() || failure()  
     - run: echo hello
       if: success() || failure()    
      
