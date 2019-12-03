@@ -1,5 +1,5 @@
 name: add path
-on: push
+on: repository_dispatch
 
 jobs:
   job1:
