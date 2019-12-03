@@ -1,15 +1,11 @@
-name: Complete Release
+name: Merge PR
 
 on: push
-#on:
- # issue_comment: 
- #   type: [created]
-
 
 jobs:
-  merge-release-into-master:
+  merge-PR:
     if: contains(github.event.commits[0].message , 'Merge')
-    #if: github.event_name != 'push'
+   
     runs-on: ubuntu-latest
     name: Merge release branch into master
     steps:
