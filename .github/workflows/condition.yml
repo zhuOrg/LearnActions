@@ -1,8 +1,10 @@
 name: Merge PR
 
+
 on:
   pull_request:
     types: [closed] 
+
 
 jobs:
   merge-PR:
