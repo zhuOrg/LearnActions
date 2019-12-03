@@ -1,17 +1,17 @@
 name: Complete Release
 
-on: [repository_dispatch]
+on: push
 #on:
  # issue_comment: 
  #   type: [created]
- #   if: github.event.comment && github.event.comment.body == 'release-complete'
+
 
 jobs:
   merge-release-into-master:
+    if: contains(github.event.commits[0].message , 'Merge')
     #if: github.event_name != 'push'
     runs-on: ubuntu-latest
     name: Merge release branch into master
-    #if: github.event.comment && github.event.comment.body == 'release-complete'
     steps:
       - uses: zhu5201314/DockerContainer_action@master
         with:
