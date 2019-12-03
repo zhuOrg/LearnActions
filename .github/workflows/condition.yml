@@ -1,6 +1,6 @@
 name: Merge PR
 
-on: push
+on: check_run
 
 jobs:
   merge-PR:
