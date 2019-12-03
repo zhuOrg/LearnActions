@@ -1,0 +1,28 @@
+name: add path
+on: repository_dispatch
+
+jobs:
+  job1:
+   
+    runs-on: ubuntu-latest
+    env:
+      VERSION: ${{ '0.2' }}
+     
+    steps:
+    - uses: actions/checkout@v1
+    - run: echo 'version'  $VERSION  'name' + $NAME
+      env:
+        NAME: subsurface/mxe-build-container:${{env.VERSION}}.stage1
+    - name: add path
+      run: |
+        mkdir -p $GITHUB_WORKSPACE/bin
+        echo "echo Hello, world!" > $GITHUB_WORKSPACE/bin/hello-world
+        echo "::add-path::$GITHUB_WORKSPACE/bin"
+        #chmod +x $GITHUB_WORKSPACE/bin/hello-world
+    - run: echo "::error [FAIL in 1 rounds]"
+    #- name: Use program
+      #run: hello-world
+      #if: success() || failure()  
+    - run: echo hello
+      if: success() || failure()    
+     

@@ -1,13 +1,19 @@
+name: workflow2
 
-name: pull requestmerge
+on: check_run
 
-on:
-  pull_request:
-    branches: 
-      - master
+env:
+  DOCKER_URL: some.docker.url
+
 jobs:
-  deploy:
+  build:  
+    
     runs-on: ubuntu-latest
+ 
     steps:
-      - name: logging
-        run: echo "$GITHUB_REF"
+    
+    - name: Step 1
+      run: |
+        echo $DOCKER_IMAGE
+      env:
+        DOCKER_IMAGE: ${{env.DOCKER_URL}}/some-namespace/some-image 

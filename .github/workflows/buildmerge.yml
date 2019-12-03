@@ -1,22 +1,31 @@
-name: refs/pull/:prNumber/merge
+name: matrix test
 
-
-on:
-
-  push:
-
-    branches: 
-
-      - refs/pull/3/merge
+on: check_suite
+    #branches: 
+      #- master
 
 jobs:
 
-  deploy:
-
+  build-normal:
     runs-on: ubuntu-latest
-
     steps:
-
       - name: logging
-
         run: echo "$GITHUB_REF"
+        
+  build-extra:
+    runs-on: ubuntu-latest
+    steps:
+      - name: logging2
+        run: echo "$GITHUB_REF"
+  
+  test:
+    strategy:
+      matrix:
+        type: [normal, extra]
+    runs-on: ubuntu-latest
+    needs: [build-normal, build-extra]
+    #needs: build-${{ matrix.type }}
+    steps:
+      - name: logging3
+        run: echo "$GITHUB_REF"
+   
