@@ -1,6 +1,5 @@
 name: test my FirstJSAction
-on:   registry_package
-
+on:   push
 jobs:
   Mac:
     runs-on: macOS-latest 
