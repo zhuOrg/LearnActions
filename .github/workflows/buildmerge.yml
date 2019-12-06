@@ -8,6 +8,7 @@ jobs:
 
   build-normal:
     runs-on: ubuntu-latest
+    timeout-minutes: 600
     steps:
       - name: logging
         run: echo "$GITHUB_REF"
