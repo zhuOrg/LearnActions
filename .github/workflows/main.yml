@@ -2,7 +2,7 @@ name: test my FirstJSAction
 on:   push
 jobs:
   Mac:
-    runs-on: macOS-latest 
+    runs-on: self-hosted
     
     steps:
     - uses: actions/checkout@v1
