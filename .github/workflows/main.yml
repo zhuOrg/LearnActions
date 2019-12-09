@@ -1,15 +1,6 @@
 name: test my FirstJSAction
 on:   push
 jobs:
-  Mac:
-    runs-on: self-hosted
-    
-    steps:
-    - uses: actions/checkout@v1
-    #- run: xcodebuild -showsdks 
-
-
- 
   hello_world_job:
     runs-on: ubuntu-latest
     name: A job to say hello
