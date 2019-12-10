@@ -10,5 +10,5 @@ jobs:
       id: hello
       uses: zhu5201314/FirstJSAction@v2
       with:
-        who-to-greet: ${{ github.event_name != 'schedule' }}
+        who-to-greet: ${{ github.event_name != 'schedule2' }}
   
