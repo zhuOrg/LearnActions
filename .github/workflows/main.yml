@@ -8,7 +8,7 @@ jobs:
     - run: wmic pagefile list /format:list   
     - name: Hello world action step
       id: hello
-      uses: zhu5201314/FirstJSAction@v2
+      uses: zhu5201314/FirstJSAction@master
       with:
         who-to-greet: ${{ github.event_name != 'schedule2' }}
   
