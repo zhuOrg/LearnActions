@@ -20,7 +20,3 @@ jobs:
       - uses: zhu5201314/DockerContainer_action@master
         with:
           who-to-greet: 'Mona the Octocat'
-  job2:
-    runs-on: [ubuntu-latest]
-    steps:
-      - run: echo 'hello'
