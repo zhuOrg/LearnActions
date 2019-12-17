@@ -1,6 +1,6 @@
 name: apt
 
-on: [push]
+on: check_run
 
 jobs:
   build:
