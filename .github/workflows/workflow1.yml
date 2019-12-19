@@ -14,6 +14,7 @@ jobs:
       run: |
         echo "::set-env name=COMPONENTS::$(find src/Viserio -mindepth 2 -type f -name phpunit.xml.dist -printf '%h,' | sort)"
           #echo "::set-env name=COMPONENTS::hhhhhhh"
+      shell: bash
     - name: use env
       shell: powershell
       run: |
