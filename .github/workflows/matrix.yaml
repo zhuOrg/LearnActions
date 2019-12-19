@@ -4,9 +4,7 @@ on: push
 
 jobs:
   build:
-    runs-on: macos
+    runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v1.0.0
-        with: 
-          clean: false
-     
+      - uses: actions/checkout@v1
+
