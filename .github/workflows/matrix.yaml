@@ -1,0 +1,10 @@
+name: matrix
+
+on: check_run
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1.0.0
+     
