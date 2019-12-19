@@ -10,7 +10,7 @@ jobs:
     - name: Dump runner context
       env:
         RUNNER_CONTEXT: ${{ toJson(runner) }}
-      run: ${env:RUNNER_CONTEXT}:
+      run: ${env:RUNNER_CONTEXT}
    
   release: 
     runs-on: self-hosted
