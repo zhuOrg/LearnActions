@@ -6,6 +6,8 @@ jobs:
     runs-on: self-hosted
   
     steps:
+    - run: set
+      shell: cmd
     - name: Dump runner context
       env:
         RUNNER_CONTEXT: ${{ toJson(runner) }}
