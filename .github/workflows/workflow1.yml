@@ -2,36 +2,31 @@ name: test set output
 # This workflow is triggered on pushes to the repository. 666
 on:  push
 jobs:
-  job1: 
+  prebuild:
     runs-on: self-hosted
     steps:
-    - uses: actions/checkout@v2
-   
-  release: 
+      - uses: actions/checkout@v1
+      - name: prebuild
+        run: |
+          write-host 'hello1'
+  test:
     runs-on: self-hosted
-  
+    needs: prebuild
     steps:
-    - run: set
-      shell: cmd
-    - name: Dump runner context
-      env:
-        RUNNER_CONTEXT: ${{ toJson(runner) }}
-      run: ${env:RUNNER_CONTEXT}
-    - name: set env
-      run: |
-        echo "::set-env name=COMPONENTS::$(find src/Viserio -mindepth 2 -type f -name phpunit.xml.dist -printf '%h,' | sort)"
-          #echo "::set-env name=COMPONENTS::hhhhhhh"
-      shell: bash
-    - name: use env
-      shell: powershell
-      run: |
-         echo ${env:COMPONENTS}
-         #hhhh
-        
-    - run:   echo ::set-env name=REPOSITORY_NAME::$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}')
-      shell: bash
+      - name: test
+        run: |
+           write-host 'hello1'
 
-    - run:   echo "$REPOSITORY_NAME"
-      shell: bash
+  build_ios:
+    runs-on: self-hosted
+    needs: [prebuild, test]
+    steps:
+       - uses: actions/checkout@v1
+
+  build_android:
+    runs-on: self-hosted
+    needs: [prebuild, test]
+    steps:
+       - uses: actions/checkout@v1
       
 
