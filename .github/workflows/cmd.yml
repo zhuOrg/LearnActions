@@ -1,4 +1,4 @@
-name: add path
+name: linux self-hosted runner
 on: push
 
 jobs:
