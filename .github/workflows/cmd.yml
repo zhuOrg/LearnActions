@@ -7,13 +7,12 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v1
-      - uses: docker://alpine
-        with:
-          args: sh -c "pwd && env"
-      - uses: docker://alpine
-        name: alpine workspace
-        with:
-          args: ls -lat
+      - run: |
+          sudo /usr/bin/docker pull alpine  sh -c "pwd && env"
+      #- uses: docker://alpine
+      #  name: alpine workspace
+       # with:
+      #   args: ls -lat
 # containner 3 4
 
      
