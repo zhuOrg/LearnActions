@@ -3,15 +3,11 @@ on: push
 
 jobs:
   self-hosted-env-alpine:
-    runs-on: [self-hosted, linux]
+    runs-on: [self-hosted, windows]
     steps:
       - name: checkout
         uses: actions/checkout@v1
       - run: |
-          sudo /usr/bin/docker run --name alpine1 --label 46b15e --workdir /github/workspace --rm -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" -v "/home/runner/work/LearnActions/LearnActions":"/github/workspace" alpine ls -lat
-      #  name: alpine workspace
-       # with:
-      #   args: ls -lat
-# containner 3 4
+          hostname
 
      
