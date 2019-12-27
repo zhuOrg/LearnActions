@@ -17,4 +17,4 @@ jobs:
         shell: pwsh
       - run: dotnet tool install --global PowerShell --version 7.0.0-rc.1
       - run: Write-Host "$($PSVersionTable.PSVersion)"
-        shell: pwsh
+        shell: pwsh-preview
