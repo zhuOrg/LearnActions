@@ -1,6 +1,6 @@
 name: self-hosted runner
 on: push
-#1
+#1 2
 jobs:
   job1:
     runs-on: self-hosted
