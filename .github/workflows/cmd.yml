@@ -9,4 +9,4 @@ jobs:
 
  
       - run: Write-Host "$($PSVersionTable.PSVersion)"
-        shell: pwsh-preview
+        working-directory: C:\Program Files\PowerShell\7-preview\
