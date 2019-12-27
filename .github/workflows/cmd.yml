@@ -1,17 +1,20 @@
-name: linux self-hosted runner
+name: self-hosted runner
 on: push
 
 jobs:
-  self-hosted-env-alpine:
-    runs-on: [self-hosted, windows]
-    steps:
-      - name: checkout
-        uses: actions/checkout@v1
-      - run: |
-          hostname
-      - run: |
-          set
-          whoami
-
-        shell: cmd   
-     
+  job1:
+    runs-on: windows-latest
+    steps: 
+    
+      - uses: actions/checkout@master
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.100'
+      - run: Write-Host 'Hello World'
+        shell: pwsh
+      - run: Write-Host "$($PSVersionTable.PSVersion)"
+        shell: pwsh
+      - run: dotnet tool install --global PowerShell --version 7.0.0-rc.1
+      - run: Write-Host "$($PSVersionTable.PSVersion)"
+        shell: pwsh
