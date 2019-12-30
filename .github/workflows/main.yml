@@ -1,5 +1,6 @@
 name: test my FirstJSAction
-on:   check_run
+on:   push
+
 jobs:
   hello_world_job:
     runs-on: windows-latest
