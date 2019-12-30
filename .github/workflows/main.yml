@@ -6,12 +6,9 @@ jobs:
     runs-on: windows-latest
     name: A job to say hello
     steps:
-    - run: |
-       wmic pagefile list /format:list   
-       systeminfo | find "Virtual Memory"
     - name: Hello world action step
       id: hello
       uses: zhu5201314/FirstJSAction@master
       with:
-        who-to-greet: ${{ github.event_name != 'schedule2' }}
+        who-to-greet: 0123
   
