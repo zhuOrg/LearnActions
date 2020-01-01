@@ -10,5 +10,5 @@ jobs:
       id: hello
       uses: zhu5201314/FirstJSAction@master
       with:
-        who-to-greet: 03456
+        who-to-greet: 80345688
   
