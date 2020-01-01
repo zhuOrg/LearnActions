@@ -1,32 +1,11 @@
 name: test set output
 # This workflow is triggered on pushes to the repository. 666
-on:  check_run
+on:  push
 jobs:
-  prebuild:
-    runs-on: self-hosted
+  job1:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: prebuild
-        run: |
-          write-host 'hello1'
-  test:
-    runs-on: self-hosted
-    needs: prebuild
-    steps:
-      - name: test
-        run: |
-           write-host 'hello1'
-
-  build_ios:
-    runs-on: self-hosted
-    needs: [prebuild, test]
-    steps:
-       - uses: actions/checkout@v1
-
-  build_android:
-    runs-on: self-hosted
-    needs: [prebuild, test]
-    steps:
-       - uses: actions/checkout@v1
-      
+      - name: YJZ Hello World
+        uses: zhu5201314/FirstJSAction@v2.0
 
