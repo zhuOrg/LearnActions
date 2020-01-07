@@ -1,5 +1,5 @@
 name: set output 
-on: check_run
+on: push
 jobs:
   job1:
     runs-on: ubuntu-latest
