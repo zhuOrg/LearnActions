@@ -3,6 +3,7 @@ on: check_run
 jobs:
   job1:
     runs-on: ubuntu-latest
+    container: null
     steps:
     - shell: bash
       id: release_description
