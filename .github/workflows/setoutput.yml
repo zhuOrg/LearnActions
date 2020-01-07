@@ -12,14 +12,8 @@ jobs:
       id: release_description
       run: |
         echo $FIREBASE_EMULATORS_PATH
-    - run:  echo $PATH
-      env:
-        PATH: ${{GITHUB.WORKSPACe}}/emulator-cach
-    - name: 'Cache Emulators'
-      uses: actions/cache@v1
+    - uses: actions/hello-world-docker-action@master
       with:
-        path: ${{ env.FIREBASE_EMULATORS_PATH }}
-        key: ${{ runner.os }}-firebase-emulators-${{ hashFiles('patch1.txt') }}
-      continue-on-error: true
-
+         who-to-greet: ${{ env.FIREBASE_EMULATORS_PATH }}
+   
  
