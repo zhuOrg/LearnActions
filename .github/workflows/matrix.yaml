@@ -1,6 +1,6 @@
 name: matrix
 
-on: push
+on: check_run
 
 jobs:
 
