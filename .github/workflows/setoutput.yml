@@ -1,22 +1,23 @@
 name: set output 
+env:
+  FIREBASE_EMULATORS_PATH: ${{GITHUB.WORKSPACe}}/emulator-cach
 on: push
 jobs:
   job1:
     runs-on: ubuntu-latest
-    container: null
     steps:
     - shell: bash
       id: release_description
       run: |
-         description="this is line one\n
-                   this is line two\n
-                   this is line three"
-         description="${description//'%'/'%25'}"
-         description="${description//$'\n'/'%0A'}"
-         description="${description//$'\r'/'%0D'}"
-         echo $description
-         echo "::set-output name=description1::$description"
-    - shell: bash
-      run: |
-         echo "${{ steps.release_description.outputs.description1 }}"
+        echo $FIREBASE_EMULATORS_PATH
+    - run:  echo $PATH
+      env:
+        PATH: ${{GITHUB.WORKSPACe}}/emulator-cach
+    - name: 'Cache Emulators'
+      uses: actions/cache@v1
+      with:
+        path: ${{GITHUB.WORKSPACe}}/emulator-cach
+        key: ${{ runner.os }}-firebase-emulators-${{ hashFiles('patch1.txt') }}
+      continue-on-error: true
+
  
