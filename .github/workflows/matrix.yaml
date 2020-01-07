@@ -10,8 +10,7 @@ jobs:
 
     runs-on: ${{ matrix.vm }}
     
-    if: ${{ matrix.image}} != null
-    container: ${{ matrix.image || null }}
+    container: ${{ matrix.image }}
 
     strategy:
 
