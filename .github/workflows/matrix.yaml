@@ -16,7 +16,7 @@ jobs:
 
       matrix:
         vm: [ubuntu-latest,ubuntu-16.04, macos-latest]
-        image: [ quay.io/ansible/default-test-container:1.10.1 ]
+        image: [ 'quay.io/ansible/default-test-container:1.10.1' ]
 
 
     steps:
