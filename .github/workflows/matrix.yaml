@@ -1,11 +1,31 @@
 name: matrix
 
-on: check_run
-
+on: push
 
 jobs:
-  build:
-    runs-on: macos-latest
+
+  job_name:
+
+    name: Run sanity tests in collections
+
+    runs-on: ${{ matrix.os.vm }}
+
+    container: ${{ matrix.os.image || null }}
+
+    strategy:
+
+      os:
+      - vm: ubuntu-latest
+        image: {}
+      - vm: ubuntu-16.04
+        image: {}
+      - vm: macos-latest
+        image: {}
+      - vm: ubuntu-latest
+        image: quay.io/ansible/default-test-container:1.10.1
+      - vm: ubuntu-latest
+        image: quay.io/ansible/fedora30-test-container:1.9.2
+
     steps:
-      - uses: actions/checkout@v1
+      - run: echo hello
 
