@@ -1,6 +1,6 @@
 name: matrix test
 
-on: check_suite
+on: pull_request
     #branches: 
       #- master
 
