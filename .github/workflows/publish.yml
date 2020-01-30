@@ -1,10 +1,9 @@
 
 name: Publish
 
-on: check_run
+on: push
 jobs:
   build:
-    if: github.events.pull_request.merged == true
     name: Build + Publish
     runs-on: ubuntu-latest
 
