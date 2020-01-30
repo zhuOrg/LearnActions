@@ -1,7 +1,5 @@
 on: 
-  push:
-      paths: 
-          - '**/buildmerge.yml'
+  pull_request:
     #branches: 
       #- master
 
@@ -13,7 +11,7 @@ jobs:
     steps:
       - name: logging
         run: |
-          buiii
+       
           echo "$GITHUB_REF"
   
    
