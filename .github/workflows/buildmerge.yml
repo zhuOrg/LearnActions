@@ -18,15 +18,4 @@ jobs:
     steps:
       - name: logging2
         run: echo "$GITHUB_REF"
-  
-  test:
-    strategy:
-      matrix:
-        type: [normal, extra]
-    runs-on: ubuntu-latest
-    needs: [build-normal, build-extra]
-    #needs: build-${{ matrix.type }}
-    steps:
-      - name: logging3
-        run: echo "$GITHUB_REF"
-   
+
