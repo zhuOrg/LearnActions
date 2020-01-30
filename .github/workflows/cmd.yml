@@ -1,5 +1,5 @@
 name: self-hosted runner
-on: check_run
+on: push
 #1 2
 jobs:
   job1:
