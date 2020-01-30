@@ -1,4 +1,4 @@
-on: check_suite
+on: push
     #branches: 
       #- master
 
@@ -9,6 +9,8 @@ jobs:
     timeout-minutes: 600
     steps:
       - name: logging
-        run: echo "$GITHUB_REF"
+        run: |
+          buiii
+          echo "$GITHUB_REF"
   
    
