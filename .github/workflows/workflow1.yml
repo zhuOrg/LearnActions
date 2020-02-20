@@ -34,19 +34,11 @@ jobs:
       - uses: actions/checkout@v1
       - name: Set Port
         env:
-          ENV_VAR: ${{ toJson(env) }}
           POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
         run: |
-           echo "$ENV_VAR"
            echo "::set-env name=POSTGRES_PORT::$POSTGRES_PORT"
-      - name: Dump job context
-        env:
-          JOB_CONTEXT: ${{ toJson(job.services) }}
-        run: echo "$JOB_CONTEXT"  
       - name: Install & Tests
         env:
-          # use postgres for the host here because we have specified a container for the job.
-          # If we were running the job on the VM this would be localhost
             DATABASE_URL: '${{ env.POSTGRES_HOST }}://${{ env.POSTGRES_USER}}:${{env.POSTGRES_PASSWORD}}@example.com:${{env.POSTGRES_PORT}}/${{env.POSTGRES_DB}}'
         # TODO How to concatenate multiple env variables in Github Actions ?
         run: |
