@@ -1,10 +1,42 @@
 # This workflow is triggered on pushes to the repository. 666 444
-on:  [ push, pull_request ]
+name: Source Code CI/CD
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
 jobs:
-  job1:
+  ci:
     runs-on: ubuntu-latest
+    container:
+      image: node
+    services:
+# More explanation about that here :
+# https://github.com/actions/example-services/blob/master/.github/workflows/postgres-service.yml
+      postgres:
+        image: postgres:12-alpine
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: jy95
+          POSTGRES_DB: sourcecode
+        ports: ["5432:5432"]
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
     steps:
       - uses: actions/checkout@v1
-      - name: YJZ Hello World
-        uses: zhu5201314/FirstJSAction@v2.0
-
+      - name: Install & Tests
+        env:
+          # use postgres for the host here because we have specified a container for the job.
+          # If we were running the job on the VM this would be localhost
+          POSTGRES_HOST: postgres
+          POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
+        # TODO How to concatenate multiple env variables in Github Actions ?
+          DATABASE_URL: ???
+        run: |
+          echo $DATABASE_URL= '$POSTGRES_HOST://$POSTGRES_USER:$POSTGRES_PASSWORD@example.com:5432/$POSTGRES_DB'
+          npm install
+          npm test
