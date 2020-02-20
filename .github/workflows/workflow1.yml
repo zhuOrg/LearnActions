@@ -1,5 +1,5 @@
 # This workflow is triggered on pushes to the repository. 666 444
-on:  push
+on:  [ push, pull_request ]
 jobs:
   job1:
     runs-on: ubuntu-latest
