@@ -1,7 +1,8 @@
 
 name: Publish
 
-on: push
+on: check_suite
+
 jobs:
   build:
     name: Build + Publish
