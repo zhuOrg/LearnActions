@@ -25,13 +25,20 @@ jobs:
           POSTGRES_DB: sourcecode
         ports: ["5432:5432"]
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
-
+    env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: jy95
+          POSTGRES_DB: sourcecode
+          POSTGRES_HOST: postgres
     steps:
       - uses: actions/checkout@v1
-      - name: Dump GitHub context
+      - name: Set Port
         env:
           ENV_VAR: ${{ toJson(env) }}
-        run: echo "$ENV_VAR"
+          POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
+        run: |
+           echo "$ENV_VAR"
+           echo "::set-env name=POSTGRES_PORT::$POSTGRES_PORT"
       - name: Dump job context
         env:
           JOB_CONTEXT: ${{ toJson(job.services) }}
@@ -40,9 +47,7 @@ jobs:
         env:
           # use postgres for the host here because we have specified a container for the job.
           # If we were running the job on the VM this would be localhost
-          POSTGRES_HOST: postgres
-          POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
-          DATABASE_URL: '${{ env.POSTGRES_HOST }}://${{ env.POSTGRES_USER}}:${{env.POSTGRES_PASSWORD}}@example.com:${{env.POSTGRES_PORT}}/${{env.POSTGRES_DB}}'
+            DATABASE_URL: '${{ env.POSTGRES_HOST }}://${{ env.POSTGRES_USER}}:${{env.POSTGRES_PASSWORD}}@example.com:${{env.POSTGRES_PORT}}/${{env.POSTGRES_DB}}'
         # TODO How to concatenate multiple env variables in Github Actions ?
         run: |
           echo $POSTGRES_HOST
