@@ -35,8 +35,8 @@ jobs:
           POSTGRES_HOST: postgres
           POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
         # TODO How to concatenate multiple env variables in Github Actions ?
-          DATABASE_URL: ???
         run: |
-          echo $DATABASE_URL= '$POSTGRES_HOST://$POSTGRES_USER:$POSTGRES_PASSWORD@example.com:5432/$POSTGRES_DB'
+          DATABASE_URL= '$POSTGRES_HOST://$POSTGRES_USER:$POSTGRES_PASSWORD@example.com:$POSTGRES_PORT/$POSTGRES_DB'
+          echo $DATABASE_URL
           npm install
           npm test
