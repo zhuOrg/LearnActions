@@ -28,6 +28,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
+      - name: Dump GitHub context
+        env:
+          ENV_VAR: ${{ toJson(env) }}
+        run: echo "$ENV_VAR"
+      - name: Dump job context
+        env:
+          JOB_CONTEXT: ${{ toJson(job.services) }}
+        run: echo "$JOB_CONTEXT"  
       - name: Install & Tests
         env:
           # use postgres for the host here because we have specified a container for the job.
