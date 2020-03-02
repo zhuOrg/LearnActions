@@ -6,7 +6,9 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - uses: actions/checkout@v2
-      - run: export $(grep -v '^#' use.env | xargs)
+      - run: |
+         export $(grep -v '^#' use.env | xargs)
+         export VARNAME="my value"
       - name: Dump Env context
         env: 
           ENV_CONTEXT: ${{ toJson(env) }}
