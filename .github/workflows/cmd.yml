@@ -5,6 +5,7 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps: 
+      - uses: actions/checkout@v2
       - run: export $(grep -v '^#' use.env | xargs)
       - name: Dump Env context
         env: 
