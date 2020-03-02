@@ -7,8 +7,11 @@ jobs:
     steps: 
       - uses: actions/checkout@v2
       - run: |
-         echo ::set-env name=$(grep -v '^#' use.env | xargs)
-
+         
+         while IFS= read -r line; do
+              echo "Text read from file: $line"
+              echo ::set-env name=$line
+         done < use.env
       - name: Dump Env context
         env: 
           ENV_CONTEXT: ${{ toJson(env) }}
