@@ -4,6 +4,7 @@ on: push
 jobs:
   job1:
     runs-on: ubuntu-latest
+    if: env.SOMEVAR == '55'
     steps: 
       - uses: actions/checkout@v2
       - run: |
