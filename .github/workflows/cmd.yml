@@ -5,7 +5,7 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps: 
-      - run: export $(grep -v '^#' .env | xargs)
+      - run: export $(grep -v '^#' use.env | xargs)
       - name: Dump Env context
         env: 
           ENV_CONTEXT: ${{ toJson(env) }}
