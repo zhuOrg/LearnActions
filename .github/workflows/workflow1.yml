@@ -3,8 +3,8 @@ name: Source Code CI/CD
 
 on:
   push:
-    branches:
-      - master
+    paths:
+      - .github/workflows/workflow1.yml
   pull_request:
     branches:
       - master
