@@ -13,7 +13,7 @@ jobs:
               echo ::set-env name=$line
          done < use.env
       - name: Dump Env context
-        if: secrets.S3_ACCESS_KEY_ID == '55'
+        if: env.SOMEVAR == '55'
         env: 
           ENV_CONTEXT: ${{ toJson(env) }}
         run: |
