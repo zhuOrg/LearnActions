@@ -7,13 +7,12 @@ jobs:
     steps: 
       - uses: actions/checkout@v2
       - run: |
-         export $(grep -v '^#' use.env | xargs)
-         export VARNAME="my value"
+         echo ::set-env name=$(grep -v '^#' use.env | xargs)
+
       - name: Dump Env context
         env: 
           ENV_CONTEXT: ${{ toJson(env) }}
         run: |
           echo "$ENV_CONTEXT"
-          echo $VARNAME
           echo $SOMEVAR
       
