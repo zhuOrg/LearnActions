@@ -30,7 +30,7 @@
     <server>
       <id>github</id>
       <username>zhu5201314</username>
-      <password>$PackagePAT</password>
+      <password>${env.PackagePAT}</password>
     </server>
   </servers>
 </settings>
