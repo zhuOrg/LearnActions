@@ -16,5 +16,5 @@ jobs:
           java-version: 13
       - name: Build with Maven
         env:
-          PackagePAT: ${{ secrets.PackagePAT }}
+          PASSWORD: ${{ secrets.PackagePAT }}
         run: mvn -B package --file pom.xml --settings settings.xml
