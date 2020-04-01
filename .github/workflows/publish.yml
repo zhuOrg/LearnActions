@@ -17,4 +17,4 @@ jobs:
       - name: Build with Maven
         env:
           PackagePAT: ${{ secrets.PackagePAT }}
-        run: mvn -B package --file pom.xml
+        run: mvn -B package --file pom.xml --settings settings.xml
