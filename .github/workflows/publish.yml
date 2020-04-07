@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: license check    
-        id: ${{matrix.bash_script}}
-        run: ./bash_script ${{ matrix.bash_script}}
+        id: ${{ matrix.bash_script }}
+        run: ./bash_script ${{ matrix.bash_script }}
  
  
