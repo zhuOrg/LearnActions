@@ -2,12 +2,8 @@
 name: Source Code CI/CD
 
 on:
-  push:
-    paths:
-      - .github/workflows/workflow1.yml
-  pull_request:
-    branches:
-      - master
+  check_suite:
+
 
 jobs:
   ci:
