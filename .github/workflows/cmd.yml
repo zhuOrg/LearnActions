@@ -1,18 +1,23 @@
-name: linux self-hosted runner
-on: push
-
+name: self-hosted runner
+on: check_suite
+#1 2
 jobs:
-  self-hosted-env-alpine:
-    runs-on: [self-hosted, linux]
-    steps:
-      - name: checkout
-        uses: actions/checkout@v1
-      - uses: docker://alpine
-        with:
-          args: sh -c "pwd && env"
-      - uses: docker://alpine
-        name: alpine workspace
-        with:
-          args: ls -lat
-
-     
+  job1:
+    runs-on: ubuntu-latest
+    container: docker.pkg.github.com/zhuorg/dockertest/yandocker:latest
+    steps: 
+      - uses: actions/checkout@v2
+      - run: |
+         
+         while IFS= read -r line; do
+              echo "Text read from file: $line"
+              echo ::set-env name=$line
+         done < use.env
+      - name: Dump Env context
+        if: env.SOMEVAR == '55'
+        env: 
+          ENV_CONTEXT: ${{ toJson(env) }}
+        run: |
+          echo "$ENV_CONTEXT"
+          echo $SOMEVAR
+      

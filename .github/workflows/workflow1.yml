@@ -1,32 +1,45 @@
-name: test set output
-# This workflow is triggered on pushes to the repository. 666
-on:  check_run
+# This workflow is triggered on pushes to the repository. 666 444
+name: Source Code CI/CD
+
+on:
+  check_suite:
+
+
 jobs:
-  prebuild:
-    runs-on: self-hosted
+  ci:
+    runs-on: ubuntu-latest
+    container:
+      image: node
+    services:
+# More explanation about that here :
+# https://github.com/actions/example-services/blob/master/.github/workflows/postgres-service.yml
+      postgres:
+        image: postgres:12-alpine
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: jy95
+          POSTGRES_DB: sourcecode
+        ports: ["5432:5432"]
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: jy95
+          POSTGRES_DB: sourcecode
+          POSTGRES_HOST: postgres
     steps:
       - uses: actions/checkout@v1
-      - name: prebuild
+      - name: Set Port
+        env:
+          POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
         run: |
-          write-host 'hello1'
-  test:
-    runs-on: self-hosted
-    needs: prebuild
-    steps:
-      - name: test
+           echo "::set-env name=POSTGRES_PORT::$POSTGRES_PORT"
+      - name: Install & Tests
+        env:
+            DATABASE_URL: '${{ env.POSTGRES_HOST }}://${{ env.POSTGRES_USER}}:${{env.POSTGRES_PASSWORD}}@example.com:${{env.POSTGRES_PORT}}/${{env.POSTGRES_DB}}'
+        # TODO How to concatenate multiple env variables in Github Actions ?
         run: |
-           write-host 'hello1'
-
-  build_ios:
-    runs-on: self-hosted
-    needs: [prebuild, test]
-    steps:
-       - uses: actions/checkout@v1
-
-  build_android:
-    runs-on: self-hosted
-    needs: [prebuild, test]
-    steps:
-       - uses: actions/checkout@v1
-      
-
+          echo $POSTGRES_HOST
+          echo $POSTGRES_PORT
+          echo $DATABASE_URL
+          npm install
+          npm test

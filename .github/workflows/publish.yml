@@ -1,12 +1,21 @@
 
-name: Publish
+name: publish
 
-on: check_run
+on: 
+ pull_request:
+  paths: 
+   - 'js/foo/bar/**'
+ 
 jobs:
   build:
-    if: github.events.pull_request.merged == true
-    name: Build + Publish
+    name: run script
     runs-on: ubuntu-latest
-
+    strategy:
+     matrix:
+      bash_script: [license_check, others]
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
+      - name: ${{ matrix.bash_script }}   
+        run: ./bash_script ${{ matrix.bash_script }}
+ 
+ 
