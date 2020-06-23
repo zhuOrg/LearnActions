@@ -1,15 +1,17 @@
+name: automerge
 on: 
-  check_suite:
-
+  pull_request: 
+    branches: 
+      - master
 jobs:
-
-  build-normal:
+  automerge:
     runs-on: ubuntu-latest
-    timeout-minutes: 600
     steps:
-      - name: logging
-        run: |
-       
-          echo "$GITHUB_REF"
+      - name: automerge
+        uses: "pascalgn/automerge-action@4536e8847eb62fe2f0ee52c8fa92d17aa97f932f"
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+  
+
   
    
